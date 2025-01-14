@@ -1,9 +1,9 @@
 # [Info]
 # 左上角标题
-site_name: 杨希杰的个人网站
-site_url: https://yang-xijie.github.io
-site_author: 杨希杰
-site_description: 杨希杰的个人网站
+site_name: smashxx00的个人网站
+site_url: https://smashxx00.github.io
+site_author: smashxx00
+site_description: smashxx00的个人网站
 
 # [Navigtion]
 nav:
@@ -342,6 +342,8 @@ nav:
     - WEBSITE/build.md
     - WEBSITE/help.md
     - WEBSITE/test.md
+  - 感悟:
+    - FEELINGS/为什么我们习惯于否定.md
 
 # [UI]
 # [top]
