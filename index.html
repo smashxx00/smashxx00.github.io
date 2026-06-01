@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="夏以琳的个人主页 · 记录技术学习、项目实践与生活观察">
+<title>夏以琳</title>
+<style>
+:root {
+  --bg: #f7fbfc;
+  --fg: #1f2a36;
+  --muted: #6f7c8a;
+  --accent: #1f7a8c;
+  --accent-soft: rgba(31, 122, 140, 0.12);
+  --line: rgba(31, 122, 140, 0.12);
+  --shadow: 0 22px 48px rgba(15, 23, 42, 0.06);
+  --card-bg: rgba(255, 255, 255, 0.76);
+}
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --fg: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #5eead4;
+  --accent-soft: rgba(94, 234, 212, 0.12);
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 22px 48px rgba(0, 0, 0, 0.36);
+  --card-bg: rgba(17, 24, 39, 0.72);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(31, 122, 140, 0.14), transparent 32%),
+    radial-gradient(circle at 80% 70%, rgba(239, 143, 90, 0.10), transparent 28%),
+    radial-gradient(circle at 50% 0%, rgba(242, 200, 121, 0.08), transparent 24%);
+}
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(31, 122, 140, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(239, 143, 90, 0.12), transparent 26%),
+    radial-gradient(circle at 50% 0%, rgba(242, 200, 121, 0.06), transparent 20%);
+}
+.theme-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--fg);
+  transition: transform 0.14s ease, border-color 0.14s ease;
+  z-index: 10;
+}
+.theme-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+.container {
+  max-width: 640px;
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+  text-align: center;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1f7a8c, #ef8f5a, #f2c879);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 700;
+  font-family: Georgia, "Noto Serif SC", serif;
+  box-shadow: 0 8px 24px rgba(31, 122, 140, 0.2);
+  letter-spacing: 0.04em;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--fg);
+  margin-bottom: 0.3rem;
+}
+.subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.role {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.bio {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.links {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+  backdrop-filter: blur(8px);
+}
+.link:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.link--primary {
+  background: linear-gradient(135deg, #1f7a8c, #176b5b);
+  color: #fff;
+  border-color: transparent;
+  font-weight: 700;
+}
+.link--primary:hover {
+  background: linear-gradient(135deg, #176b5b, #0e5246);
+  border-color: transparent;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+.card {
+  padding: 1.3rem 1rem;
+  border-radius: 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  transition: transform 0.14s ease, border-color 0.14s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--fg);
+}
+.card p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+footer {
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+@media (max-width: 520px) {
+  body { padding: 1.5rem 1rem; }
+  h1 { font-size: 1.7rem; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<button class="theme-btn" id="themeBtn" aria-label="切换深色模式">🌙</button>
+<div class="container">
+  <div>
+    <div class="avatar">夏</div>
+    <h1>夏以琳</h1>
+    <div class="role">持续记录 · 长期主义</div>
+    <p class="bio">
+      记录技术学习中的关键结论和踩坑记录，分享正在推进的项目、功能设计与阶段性复盘。
+      把生活感受写成清晰的文字，做长期主义的创作者。
+    </p>
+  </div>
+
+  <div class="links">
+    <a class="link link--primary" href="/blog/">
+      <span>📖</span> 进入博客
+    </a>
+    <a class="link" href="https://github.com/smashxx00" target="_blank" rel="noopener">
+      <span>🐙</span> GitHub
+    </a>
+  </div>
+
+  <div class="card-grid">
+    <a class="card" href="/blog/">
+      <span class="icon">📝</span>
+      <h3>技术博客</h3>
+      <p>前端、嵌入式、项目实践与学习笔记，以文章沉淀思考</p>
+    </a>
+    <a class="card" href="/blog/kaoyan/">
+      <span class="icon">📅</span>
+      <h3>考研日记</h3>
+      <p>每日复盘与学习记录，连续打卡、科目分布与趋势</p>
+    </a>
+    <a class="card" href="/blog/about/">
+      <span class="icon">👤</span>
+      <h3>关于</h3>
+      <p>了解这个站点的定位、内容方向和长期规划</p>
+    </a>
+    <a class="card" href="https://github.com/smashxx00/blog" target="_blank" rel="noopener">
+      <span class="icon">🔧</span>
+      <h3>站点源码</h3>
+      <p>Hexo + butterfly 主题，GitHub 托管，Vercel 后台</p>
+    </a>
+  </div>
+
+  <footer>© 2026 夏以琳 · 以文字沉淀思考，以项目验证想法</footer>
+</div>
+
+<script>
+const btn = document.getElementById('themeBtn');
+const saved = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (saved === 'dark' || (!saved && prefersDark)) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  btn.textContent = '☀️';
+}
+btn.addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  btn.textContent = isDark ? '🌙' : '☀️';
+});
+</script>
+</body>
+</html>
