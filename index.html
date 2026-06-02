@@ -15,73 +15,43 @@
 
 <!-- ═══════════ BUTTERFLIES ═══════════ -->
 <div class="butterflies" aria-hidden="true">
-  <!-- B1: 左上→右下，大，慢 -->
-  <div class="butterfly b1" style="--sz:44px;--dur:19s;--del:0s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  <!-- 左上，大，慢 -->
+  <div class="bfly bfly-1">
+    <svg viewBox="0 0 100 80" aria-hidden="true">
+      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
+      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
+      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
+      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
+    </svg>
   </div>
-  <!-- B2: 右上→左下，中 -->
-  <div class="butterfly b2" style="--sz:34px;--dur:15s;--del:3s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  <!-- 右下，中 -->
+  <div class="bfly bfly-2">
+    <svg viewBox="0 0 100 80" aria-hidden="true">
+      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
+      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
+      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
+      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
+    </svg>
   </div>
-  <!-- B3: 左→右偏上，中 -->
-  <div class="butterfly b3" style="--sz:38px;--dur:17s;--del:6s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  <!-- 右上，中 -->
+  <div class="bfly bfly-3">
+    <svg viewBox="0 0 100 80" aria-hidden="true">
+      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
+      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
+      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
+      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
+    </svg>
   </div>
-  <!-- B4: 右→左偏下，小快 -->
-  <div class="butterfly b4" style="--sz:26px;--dur:12s;--del:2s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
-  </div>
-  <!-- B5: 上→下偏左，大慢 -->
-  <div class="butterfly b5" style="--sz:40px;--dur:21s;--del:8s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
-  </div>
-  <!-- B6: 下→上偏右，微 -->
-  <div class="butterfly b6" style="--sz:22px;--dur:14s;--del:5s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
-  </div>
-  <!-- B7: 左下→右上，中 -->
-  <div class="butterfly b7" style="--sz:32px;--dur:18s;--del:10s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
-  </div>
-  <!-- B8: 右下→左上，小 -->
-  <div class="butterfly b8" style="--sz:28px;--dur:16s;--del:1s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
-  </div>
-  <!-- B9: 左→右偏中，中快 -->
-  <div class="butterfly b9" style="--sz:30px;--dur:13s;--del:7s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
-  </div>
-  <!-- B10: 右→左偏上，大 -->
-  <div class="butterfly b10" style="--sz:42px;--dur:20s;--del:4s">
-    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  <!-- 左中，小 -->
+  <div class="bfly bfly-4">
+    <svg viewBox="0 0 100 80" aria-hidden="true">
+      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
+      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
+      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
+      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
+    </svg>
   </div>
 </div>
-
-<!-- 蝴蝶 SVG 模板 -->
-<svg style="position:absolute;width:0;height:0" aria-hidden="true">
-  <defs>
-    <g id="bfly">
-      <!-- 上翅左 -->
-      <path class="wup" d="M25,15 C17,2 3,5 2,14 C1,23 15,28 25,15Z"/>
-      <!-- 上翅右 -->
-      <path class="wup" d="M25,15 C33,2 47,5 48,14 C49,23 35,28 25,15Z"/>
-      <!-- 下翅左 -->
-      <path class="wdn" d="M25,17 C20,25 8,32 6,32 C4,32 14,38 25,19Z"/>
-      <!-- 下翅右 -->
-      <path class="wdn" d="M25,17 C30,25 42,32 44,32 C46,32 36,38 25,19Z"/>
-      <!-- 身体 -->
-      <ellipse class="bdy" cx="25" cy="15" rx="1" ry="5.5"/>
-      <!-- 触角 -->
-      <path class="ant" d="M24,10 Q22,5 20,3" fill="none"/>
-      <path class="ant" d="M26,10 Q28,5 30,3" fill="none"/>
-      <!-- 翅脉 -->
-      <path class="vein" d="M25,15 C20,10 12,11 8,13" fill="none"/>
-      <path class="vein" d="M25,15 C20,19 12,21 8,19" fill="none"/>
-      <path class="vein" d="M25,15 C30,10 38,11 42,13" fill="none"/>
-      <path class="vein" d="M25,15 C30,19 38,21 42,19" fill="none"/>
-    </g>
-  </defs>
-</svg>
 
 <script src="assets/js/main.js"></script>
 </body>
