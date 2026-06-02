@@ -4,15 +4,22 @@
   var butterflies = document.querySelectorAll('[data-butterfly]');
   if (!butterflies.length) return;
 
-  var mx = -9999;
-  var my = -9999;
-  var threshold = 320;
-  var fleeStrength = 80;
+  var mx = window.innerWidth / 2;
+  var my = window.innerHeight / 2;
+  var threshold = 500;
+  var fleeStrength = 160;
 
   document.addEventListener('mousemove', function (e) {
     mx = e.clientX;
     my = e.clientY;
   });
+
+  document.addEventListener('touchmove', function (e) {
+    if (e.touches.length) {
+      mx = e.touches[0].clientX;
+      my = e.touches[0].clientY;
+    }
+  }, { passive: true });
 
   function lerp(a, b, t) {
     return a + (b - a) * t;
@@ -40,8 +47,8 @@
 
       var tx, ty;
       if (dist < threshold && dist > 0) {
+        // linear falloff for more dramatic effect
         var force = (threshold - dist) / threshold;
-        force = force * force;
         var angle = Math.atan2(dy, dx) + Math.PI;
         tx = Math.cos(angle) * fleeStrength * force * t.speed;
         ty = Math.sin(angle) * fleeStrength * force * t.speed;
@@ -50,8 +57,8 @@
         ty = 0;
       }
 
-      t.x = lerp(t.x, tx, 0.08);
-      t.y = lerp(t.y, ty, 0.08);
+      t.x = lerp(t.x, tx, 0.12);
+      t.y = lerp(t.y, ty, 0.12);
 
       t.el.style.transform = 'translate(' + t.x.toFixed(1) + 'px, ' + t.y.toFixed(1) + 'px)';
     });
