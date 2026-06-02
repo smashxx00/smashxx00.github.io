@@ -193,7 +193,75 @@
   </div>
 </div>
 
-<script src="assets/js/main.js"></script>
 <script src="assets/js/butterfly-flee.js"></script>
+
+<!-- ═══════════ BAMBOO LEAVES ═══════════ -->
+<div class="bamboo-bg" aria-hidden="true">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#73b89f"/><stop offset="100%" stop-color="#468c73"/>
+      </linearGradient>
+      <linearGradient id="leafGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#95d1ba"/><stop offset="100%" stop-color="#63a68d"/>
+      </linearGradient>
+      <linearGradient id="bambooBranchGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#5a8c7a"/><stop offset="100%" stop-color="#366353"/>
+      </linearGradient>
+      <g id="leaf"><path d="M0,0 C15,-8 45,-4 65,3 C45,5 15,6 0,0 Z"/></g>
+      <g id="leaf-small"><path d="M0,0 C10,-5 30,-2 45,2 C30,4 10,4 0,0 Z"/></g>
+      <filter id="blurBg"><feGaussianBlur stdDeviation="4"/></filter>
+    </defs>
+    <style>
+      .bamboo-sway { animation: bsway ease-in-out infinite alternate; }
+      .bamboo-leaf { animation: btremble ease-in-out infinite alternate; transform-origin: 0px 0px; }
+      .bamboo-dust { animation: bfloat linear infinite; }
+      .bd1 { animation-delay: 0s; } .bd2 { animation-delay: -2.5s; } .bd3 { animation-delay: -5s; } .bd4 { animation-delay: -1.2s; } .bd5 { animation-delay: -3.8s; }
+      .bs-slow { animation-duration: 14s; } .bs-mid { animation-duration: 9s; } .bs-fast { animation-duration: 6s; } .bs-tremble { animation-duration: 3.5s; }
+      @keyframes bsway { 0% { transform: rotate(-1.5deg); } 100% { transform: rotate(2.5deg); } }
+      @keyframes btremble { 0% { transform: rotate(-4deg); } 100% { transform: rotate(5deg); } }
+      @keyframes bfloat { 0% { transform: translateY(0) translateX(0); opacity: 0; } 20% { opacity: 0.5; } 80% { opacity: 0.5; } 100% { transform: translateY(-120px) translateX(40px); opacity: 0; } }
+    </style>
+    <g filter="url(#blurBg)" opacity="0.3">
+      <g class="bamboo-sway bs-slow bd2" style="transform-origin:400px 0">
+        <path d="M400,-20 Q430,200 380,450" stroke="#63a68d" stroke-width="2" fill="none"/>
+        <g transform="translate(415,150) rotate(40)"><g class="bamboo-leaf bs-tremble bd1"><use href="#leaf" fill="#95d1ba"/></g></g>
+        <g transform="translate(395,300) rotate(140)"><g class="bamboo-leaf bs-tremble bd3"><use href="#leaf" fill="#95d1ba"/></g></g>
+      </g>
+      <g class="bamboo-sway bs-slow bd4" style="transform-origin:1500px 0">
+        <path d="M1500,-20 Q1460,180 1520,400" stroke="#63a68d" stroke-width="2" fill="none"/>
+        <g transform="translate(1480,180) rotate(130)"><g class="bamboo-leaf bs-tremble bd2"><use href="#leaf" fill="#95d1ba"/></g></g>
+      </g>
+    </g>
+    <g class="bamboo-sway bs-mid bd1" style="transform-origin:120px 0" opacity="0.7">
+      <path d="M120,-20 Q180,250 90,550 T140,850" stroke="url(#bambooBranchGrad)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(150,180) rotate(55)"><g class="bamboo-leaf bs-tremble bd1"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+      <g transform="translate(135,320) rotate(145)"><g class="bamboo-leaf bs-tremble bd3"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+      <g transform="translate(105,480) rotate(25)"><g class="bamboo-leaf bs-tremble bd5"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+      <g transform="translate(95,620) rotate(165)"><g class="bamboo-leaf bs-tremble bd2"><use href="#leaf-small" fill="url(#leafGradLight)"/></g></g>
+      <g transform="translate(120,750) rotate(45)"><g class="bamboo-leaf bs-tremble bd4"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+    </g>
+    <g class="bamboo-sway bs-mid bd3" style="transform-origin:1780px 0" opacity="0.65">
+      <path d="M1780,-20 Q1720,220 1820,480 T1750,750" stroke="url(#bambooBranchGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g transform="translate(1750,160) rotate(125)"><g class="bamboo-leaf bs-tremble bd2"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+      <g transform="translate(1785,300) rotate(35)"><g class="bamboo-leaf bs-tremble bd4"><use href="#leaf-small" fill="url(#leafGradLight)"/></g></g>
+      <g transform="translate(1810,450) rotate(155)"><g class="bamboo-leaf bs-tremble bd1"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+      <g transform="translate(1775,600) rotate(50)"><g class="bamboo-leaf bs-tremble bd5"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+    </g>
+    <g class="bamboo-sway bs-slow bd5" style="transform-origin:1920px 1080px" opacity="0.5">
+      <path d="M1950,1100 Q1820,980 1680,880" stroke="url(#bambooBranchGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(1840,1000) rotate(-135)"><g class="bamboo-leaf bs-tremble bd3"><use href="#leaf" fill="url(#leafGrad)"/></g></g>
+      <g transform="translate(1730,910) rotate(-165)"><g class="bamboo-leaf bs-tremble bd1"><use href="#leaf-small" fill="url(#leafGradLight)"/></g></g>
+    </g>
+    <g fill="#aee6d4">
+      <circle cx="350" cy="400" r="2" class="bamboo-dust bs-slow bd1"/>
+      <circle cx="1600" cy="350" r="1.5" fill="#fff" class="bamboo-dust bs-mid bd2"/>
+      <circle cx="850" cy="800" r="2.5" class="bamboo-dust bs-slow bd4"/>
+      <circle cx="1400" cy="700" r="2" fill="#fff" class="bamboo-dust bs-mid bd5"/>
+    </g>
+  </svg>
+</div>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
