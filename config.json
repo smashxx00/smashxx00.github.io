@@ -1,0 +1,72 @@
+{
+  "site": {
+    "name": "夏以琳",
+    "description": "嵌入式与底层 / 长期记录 / 把生活写成可以被阅读的散文",
+    "footer": "© 2026 夏以琳 · 以文字沉淀思考，以项目验证想法"
+  },
+  "hero": {
+    "avatar": "夏",
+    "badge": "考研冲刺中",
+    "signature": "习惯 · 个性 · 命运 · 人生",
+    "links": [
+      { "text": "进入博客", "icon": "📖", "url": "/blog/" },
+      { "text": "GitHub", "icon": "🐙", "url": "https://github.com/smashxx00" }
+    ]
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "title": "🗓 现在",
+      "columns": 3,
+      "items": [
+        { "icon": "🔥", "title": "考研冲刺中", "text": "2026 入学 · 信号与系统 / 高数 / 英语 / 政治", "url": "/blog/kaoyan/" },
+        { "icon": "🛠", "title": "学点新东西", "text": "嵌入式与底层 · C / RTOS / STM32" },
+        { "icon": "💭", "title": "长期主义", "text": "不急，不停。写代码，做笔记，过日子。" }
+      ]
+    },
+    {
+      "type": "books",
+      "title": "📚 在读 & 在写",
+      "items": [
+        { "title": "《你当像鸟飞往你的山》", "author": "塔拉·韦斯特弗", "note": "教育如何重塑一个人。" },
+        { "title": "《深度关系》", "author": "武志红", "note": "自处与亲密的练习。" },
+        { "title": "《贪婪的多巴胺》", "author": "丹尼尔·利伯曼", "note": "欲望不是快乐，奖赏也不是终点。" }
+      ],
+      "tags": ["随笔", "技术文章", "读书笔记"],
+      "tagHint": "—— 都写在博客里"
+    },
+    {
+      "type": "quote",
+      "text": "人生没有白走的路，每一步都算数。",
+      "author": ""
+    },
+    {
+      "type": "cards",
+      "title": "🏃 身体在路上",
+      "columns": 2,
+      "items": [
+        { "icon": "⛰", "title": "登山徒步", "text": "走出市内，去山里呼吸。" },
+        { "icon": "🏀", "title": "球类", "text": "篮球 / 羽毛球 / 乒乓，夜场开局。" }
+      ]
+    },
+    {
+      "type": "timeline",
+      "title": "📍 时间线",
+      "items": [
+        { "year": "2026", "title": "考研冲刺中", "text": "信号与系统 / 高数 / 英语 / 政治，每一天都在往目标靠近。" }
+      ],
+      "hint": "更多节点，持续追加中。"
+    },
+    {
+      "type": "entries",
+      "title": "🔗 入口",
+      "columns": 2,
+      "items": [
+        { "icon": "📝", "title": "技术博客", "text": "前端、嵌入式、项目实践与学习笔记", "url": "/blog/" },
+        { "icon": "📅", "title": "考研日记", "text": "每日复盘与学习记录，连续打卡与趋势", "url": "/blog/kaoyan/" },
+        { "icon": "👤", "title": "关于", "text": "这个站点的定位、内容方向和长期规划", "url": "/blog/about/" },
+        { "icon": "🐙", "title": "GitHub", "text": "@smashxx00", "url": "https://github.com/smashxx00" }
+      ]
+    }
+  ]
+}

@@ -180,36 +180,30 @@ body::before {
   border-color: var(--accent);
 }
 
-/* ---- Now cards ---- */
-.card-grid { display: grid; }
+/* ---- Card grid (generic) ---- */
+.card-grid { display: grid; gap: 1rem; }
 
-.now-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-
-.now-card h3,
-.sports-card h3 {
+.card-grid h3 {
   font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
   color: var(--fg);
 }
 
-.now-card p,
-.sports-card p {
+.card-grid p {
   font-size: 0.82rem;
   color: var(--muted);
   line-height: 1.6;
 }
 
-.now-icon,
-.sports-icon,
-.entry-icon {
+.card-icon {
   font-size: 1.6rem;
   display: block;
   margin-bottom: 0.5rem;
 }
 
 /* ---- Book cards ---- */
-.book-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.book-grid { gap: 1rem; margin-bottom: 1rem; }
 
 .book-card { text-align: left; }
 
@@ -234,7 +228,14 @@ body::before {
 }
 
 /* ---- Tags ---- */
-.tag-row { margin-top: 0.2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+.tag-row {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
 .tag {
   display: inline-block;
@@ -246,10 +247,15 @@ body::before {
   font-weight: 500;
 }
 
-/* ---- Sports ---- */
-.sports-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-
 /* ---- Timeline ---- */
+.timeline-list {
+  list-style: none;
+  border-left: 2px solid var(--line);
+  padding-left: 1.8rem;
+  display: grid;
+  gap: 2rem;
+}
+
 .timeline-entry { position: relative; }
 
 .timeline-entry::before {
@@ -288,8 +294,60 @@ body::before {
   line-height: 1.6;
 }
 
-/* ---- Entry cards ---- */
-.entries-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+/* ---- Quote ---- */
+.quote-block {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.quote-text {
+  font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+.quote-text::before,
+.quote-text::after {
+  color: var(--accent);
+  opacity: 0.3;
+  font-size: 2rem;
+  position: absolute;
+}
+
+.quote-text::before { content: '\201C'; left: -1.2rem; top: -0.3rem; }
+.quote-text::after  { content: '\201D'; right: -1.2rem; bottom: -1rem; }
+
+.quote-author {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.8rem;
+}
+
+/* ---- Divider ---- */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: var(--line);
+  margin: 0 auto 3rem;
+  max-width: 200px;
+  opacity: 0.6;
+}
+
+/* ---- Text block ---- */
+.text-block {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
 
 /* ---- Footer ---- */
 footer { opacity: 0.8; }
@@ -299,8 +357,7 @@ footer { opacity: 0.8; }
 
 /* ---- Responsive ---- */
 @media (max-width: 640px) {
-  .now-grid { grid-template-columns: 1fr; }
-  .book-grid { grid-template-columns: 1fr; }
-  .sports-grid { grid-template-columns: 1fr; }
-  .entries-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr !important; }
+  .book-grid { grid-template-columns: 1fr !important; }
+  .quote-text { font-size: 1.1rem; }
 }
