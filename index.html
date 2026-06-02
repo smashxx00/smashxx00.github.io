@@ -12,85 +12,77 @@
 <button class="theme-btn" id="themeBtn" aria-label="切换深色模式">🌙</button>
 <main class="container" id="app"></main>
 <footer class="reveal" id="pageFooter" style="text-align:center;padding:2rem 0;font-size:0.78rem;color:var(--muted)"></footer>
-<div class="butterflies">
-  <!-- B1: top-right, large, slow drift -->
-  <div class="butterfly" style="top:8%;right:12%;width:42px;animation:drift-1 14s ease-in-out infinite;animation-delay:0s">
-    <svg viewBox="0 0 50 40">
-      <g class="wing-left" style="animation:flap-upper-left 0.45s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
-      <g class="wing-right" style="animation:flap-upper-right 0.45s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
-      <g class="wing-lower-left" style="animation:flap-lower-left 0.5s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
-      <g class="wing-lower-right" style="animation:flap-lower-right 0.5s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
-      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
-      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
-      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
-    </svg>
-  </div>
 
-  <!-- B2: mid-left, small -->
-  <div class="butterfly" style="top:30%;left:6%;width:30px;animation:drift-2 16s ease-in-out infinite;animation-delay:2s">
-    <svg viewBox="0 0 50 40">
-      <g class="wing-left" style="animation:flap-upper-left 0.35s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
-      <g class="wing-right" style="animation:flap-upper-right 0.35s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
-      <g class="wing-lower-left" style="animation:flap-lower-left 0.4s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
-      <g class="wing-lower-right" style="animation:flap-lower-right 0.4s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
-      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
-      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
-      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
-    </svg>
+<!-- ═══════════ BUTTERFLIES ═══════════ -->
+<div class="butterflies" aria-hidden="true">
+  <!-- B1: 左上→右下，大，慢 -->
+  <div class="butterfly b1" style="--sz:44px;--dur:19s;--del:0s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
   </div>
-
-  <!-- B3: mid-right, medium, turn-around effect -->
-  <div class="butterfly" style="top:45%;right:8%;width:36px;animation:drift-3 18s ease-in-out infinite;animation-delay:5s">
-    <svg viewBox="0 0 50 40">
-      <g class="wing-left" style="animation:flap-upper-left 0.5s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
-      <g class="wing-right" style="animation:flap-upper-right 0.5s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
-      <g class="wing-lower-left" style="animation:flap-lower-left 0.55s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
-      <g class="wing-lower-right" style="animation:flap-lower-right 0.55s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
-      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
-      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
-      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
-    </svg>
+  <!-- B2: 右上→左下，中 -->
+  <div class="butterfly b2" style="--sz:34px;--dur:15s;--del:3s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
   </div>
-
-  <!-- B4: bottom-left, small -->
-  <div class="butterfly" style="top:65%;left:10%;width:28px;animation:drift-4 15s ease-in-out infinite;animation-delay:3s">
-    <svg viewBox="0 0 50 40">
-      <g class="wing-left" style="animation:flap-upper-left 0.4s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
-      <g class="wing-right" style="animation:flap-upper-right 0.4s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
-      <g class="wing-lower-left" style="animation:flap-lower-left 0.45s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
-      <g class="wing-lower-right" style="animation:flap-lower-right 0.45s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
-      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
-      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
-      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
-    </svg>
+  <!-- B3: 左→右偏上，中 -->
+  <div class="butterfly b3" style="--sz:38px;--dur:17s;--del:6s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
   </div>
-
-  <!-- B5: top-center, medium -->
-  <div class="butterfly" style="top:12%;left:45%;width:34px;animation:drift-5 13s ease-in-out infinite;animation-delay:1s">
-    <svg viewBox="0 0 50 40">
-      <g class="wing-left" style="animation:flap-upper-left 0.38s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
-      <g class="wing-right" style="animation:flap-upper-right 0.38s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
-      <g class="wing-lower-left" style="animation:flap-lower-left 0.42s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
-      <g class="wing-lower-right" style="animation:flap-lower-right 0.42s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
-      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
-      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
-      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
-    </svg>
+  <!-- B4: 右→左偏下，小快 -->
+  <div class="butterfly b4" style="--sz:26px;--dur:12s;--del:2s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
   </div>
-
-  <!-- B6: bottom-right, tiny -->
-  <div class="butterfly" style="top:72%;right:15%;width:24px;animation:drift-6 17s ease-in-out infinite;animation-delay:6s">
-    <svg viewBox="0 0 50 40">
-      <g class="wing-left" style="animation:flap-upper-left 0.32s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
-      <g class="wing-right" style="animation:flap-upper-right 0.32s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
-      <g class="wing-lower-left" style="animation:flap-lower-left 0.36s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
-      <g class="wing-lower-right" style="animation:flap-lower-right 0.36s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
-      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
-      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
-      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
-    </svg>
+  <!-- B5: 上→下偏左，大慢 -->
+  <div class="butterfly b5" style="--sz:40px;--dur:21s;--del:8s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  </div>
+  <!-- B6: 下→上偏右，微 -->
+  <div class="butterfly b6" style="--sz:22px;--dur:14s;--del:5s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  </div>
+  <!-- B7: 左下→右上，中 -->
+  <div class="butterfly b7" style="--sz:32px;--dur:18s;--del:10s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  </div>
+  <!-- B8: 右下→左上，小 -->
+  <div class="butterfly b8" style="--sz:28px;--dur:16s;--del:1s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  </div>
+  <!-- B9: 左→右偏中，中快 -->
+  <div class="butterfly b9" style="--sz:30px;--dur:13s;--del:7s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
+  </div>
+  <!-- B10: 右→左偏上，大 -->
+  <div class="butterfly b10" style="--sz:42px;--dur:20s;--del:4s">
+    <svg viewBox="0 0 50 40"><use href="#bfly"/></svg>
   </div>
 </div>
+
+<!-- 蝴蝶 SVG 模板 -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <g id="bfly">
+      <!-- 上翅左 -->
+      <path class="wup" d="M25,15 C17,2 3,5 2,14 C1,23 15,28 25,15Z"/>
+      <!-- 上翅右 -->
+      <path class="wup" d="M25,15 C33,2 47,5 48,14 C49,23 35,28 25,15Z"/>
+      <!-- 下翅左 -->
+      <path class="wdn" d="M25,17 C20,25 8,32 6,32 C4,32 14,38 25,19Z"/>
+      <!-- 下翅右 -->
+      <path class="wdn" d="M25,17 C30,25 42,32 44,32 C46,32 36,38 25,19Z"/>
+      <!-- 身体 -->
+      <ellipse class="bdy" cx="25" cy="15" rx="1" ry="5.5"/>
+      <!-- 触角 -->
+      <path class="ant" d="M24,10 Q22,5 20,3" fill="none"/>
+      <path class="ant" d="M26,10 Q28,5 30,3" fill="none"/>
+      <!-- 翅脉 -->
+      <path class="vein" d="M25,15 C20,10 12,11 8,13" fill="none"/>
+      <path class="vein" d="M25,15 C20,19 12,21 8,19" fill="none"/>
+      <path class="vein" d="M25,15 C30,10 38,11 42,13" fill="none"/>
+      <path class="vein" d="M25,15 C30,19 38,21 42,19" fill="none"/>
+    </g>
+  </defs>
+</svg>
+
 <script src="assets/js/main.js"></script>
 </body>
 </html>
