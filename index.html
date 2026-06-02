@@ -15,40 +15,177 @@
 
 <!-- ═══════════ BUTTERFLIES ═══════════ -->
 <div class="butterflies" aria-hidden="true">
-  <!-- 左上，大，慢 -->
-  <div class="bfly bfly-1">
-    <svg viewBox="0 0 100 80" aria-hidden="true">
-      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
-      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
-      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
-      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
+  <!-- 右侧，较大 -->
+  <div class="bfly bfly--right">
+    <svg viewBox="0 0 800 600" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="wingGradientR" cx="30%" cy="30%" r="70%">
+          <stop offset="0%" style="stop-color:#b2f2e8;stop-opacity:0.85"/>
+          <stop offset="30%" style="stop-color:#5ee6cc;stop-opacity:0.78"/>
+          <stop offset="60%" style="stop-color:#26c4a8;stop-opacity:0.7"/>
+          <stop offset="100%" style="stop-color:#0d8a72;stop-opacity:0.55"/>
+        </radialGradient>
+        <radialGradient id="wingGradient2R" cx="70%" cy="30%" r="70%">
+          <stop offset="0%" style="stop-color:#c8f7ef;stop-opacity:0.72"/>
+          <stop offset="40%" style="stop-color:#7ee8d4;stop-opacity:0.65"/>
+          <stop offset="70%" style="stop-color:#3dd4b8;stop-opacity:0.58"/>
+          <stop offset="100%" style="stop-color:#15a088;stop-opacity:0.45"/>
+        </radialGradient>
+        <linearGradient id="bodyGradientR" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#1a6b5c"/>
+          <stop offset="50%" style="stop-color:#0d4a3f"/>
+          <stop offset="100%" style="stop-color:#1a6b5c"/>
+        </linearGradient>
+        <filter id="softGlowR" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="particleGlowR" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <style>
+        .bfly-gR { animation: floatB 6s ease-in-out infinite; transform-origin: 400px 300px; }
+        @keyframes floatB { 0%,100% { transform:translate(0,0) rotate(0deg) } 25% { transform:translate(12px,-18px) rotate(3deg) } 50% { transform:translate(-8px,-25px) rotate(-2deg) } 75% { transform:translate(-15px,-8px) rotate(2deg) } }
+        .left-wingR { animation: flapL 3s ease-in-out infinite; transform-origin:400px 280px; }
+        @keyframes flapL { 0%,100% { transform:scaleX(1) rotate(0deg) } 50% { transform:scaleX(0.55) rotate(-4deg) } }
+        .right-wingR { animation: flapR 3s ease-in-out infinite; transform-origin:400px 280px; }
+        @keyframes flapR { 0%,100% { transform:scaleX(1) rotate(0deg) } 50% { transform:scaleX(0.55) rotate(4deg) } }
+        .particleR { animation: floatP 4s ease-in-out infinite; }
+        .particleR:nth-child(odd) { animation-duration: 5s; }
+        @keyframes floatP { 0% { opacity:0; transform:translate(0,0) scale(0.5) } 20% { opacity:1 } 80% { opacity:0.7 } 100% { opacity:0; transform:translate(var(--dx),var(--dy)) scale(1.2) } }
+        .wing-patternR { animation: shimmer 4s ease-in-out infinite; }
+        @keyframes shimmer { 0%,100% { opacity:0.5 } 50% { opacity:0.9 } }
+        .wing-edgeR { animation: edgeGlow 3s ease-in-out infinite; }
+        @keyframes edgeGlow { 0%,100% { stroke-opacity:0.3 } 50% { stroke-opacity:0.7 } }
+        .body-pulseR { animation: bodyPulse 2s ease-in-out infinite; }
+        @keyframes bodyPulse { 0%,100% { opacity:0.85 } 50% { opacity:1 } }
+        .antenna-lR { animation: antSwayL 4s ease-in-out infinite; transform-origin:398px 250px; }
+        @keyframes antSwayL { 0%,100% { transform:rotate(0deg) } 50% { transform:rotate(3deg) } }
+        .antenna-rR { animation: antSwayR 4s ease-in-out infinite reverse; transform-origin:402px 250px; }
+        @keyframes antSwayR { 0%,100% { transform:rotate(0deg) } 50% { transform:rotate(3deg) } }
+        .lspotR { animation: lightMove 8s ease-in-out infinite; }
+        @keyframes lightMove { 0%,100% { transform:translate(0,0); opacity:0.25 } 25% { transform:translate(18px,-12px); opacity:0.5 } 50% { transform:translate(-12px,-20px); opacity:0.3 } 75% { transform:translate(-20px,8px); opacity:0.55 } }
+      </style>
+      <g class="lspotR" opacity="0.25"><circle cx="200" cy="150" r="35" fill="#5ee6cc" filter="url(#softGlowR)"/></g>
+      <g class="lspotR" style="animation-delay:2s" opacity="0.18"><circle cx="600" cy="180" r="25" fill="#7ee8d4" filter="url(#softGlowR)"/></g>
+      <g class="lspotR" style="animation-delay:4s" opacity="0.2"><circle cx="350" cy="450" r="30" fill="#26c4a8" filter="url(#softGlowR)"/></g>
+      <g class="bfly-gR" filter="url(#softGlowR)">
+        <circle cx="450" cy="320" r="2.5" fill="#5ee6cc" filter="url(#particleGlowR)" class="particleR" style="--dx:-40px;--dy:-45px;"/>
+        <circle cx="430" cy="310" r="2" fill="#7ee8d4" filter="url(#particleGlowR)" class="particleR" style="--dx:50px;--dy:-40px;animation-delay:0.5s"/>
+        <circle cx="460" cy="300" r="2" fill="#3dd4b8" filter="url(#particleGlowR)" class="particleR" style="--dx:-55px;--dy:-25px;animation-delay:1s"/>
+        <circle cx="440" cy="330" r="1.5" fill="#5ee6cc" filter="url(#particleGlowR)" class="particleR" style="--dx:40px;--dy:35px;animation-delay:1.5s"/>
+        <g class="left-wingR">
+          <path d="M400 280 C380 230,340 180,280 160 C240 148,220 170,230 200 C240 240,270 270,300 290 C330 305,370 300,400 285Z" fill="url(#wingGradientR)" stroke="#1a8a72" stroke-width="0.5" opacity="0.85"/>
+          <path d="M400 285 C370 300,330 320,300 350 C280 370,270 390,285 400 C310 410,350 390,375 360 C390 340,395 310,400 290Z" fill="url(#wingGradient2R)" stroke="#1a8a72" stroke-width="0.5" opacity="0.78"/>
+          <g class="wing-patternR"><ellipse cx="310" cy="210" rx="16" ry="12" fill="#0d6b5a" opacity="0.6"/><ellipse cx="310" cy="210" rx="10" ry="7" fill="#5ee6cc" opacity="0.5"/><ellipse cx="310" cy="210" rx="4" ry="2.5" fill="#b2f2e8" opacity="0.7"/><path d="M400 280 C370 260,340 240,300 220" stroke="#0d8a72" stroke-width="0.7" fill="none" opacity="0.4"/><path d="M400 285 C360 310,330 340,310 365" stroke="#0d8a72" stroke-width="0.5" fill="none" opacity="0.3"/><circle cx="320" cy="360" r="6" fill="#0d6b5a" opacity="0.5"/><circle cx="320" cy="360" r="3" fill="#7ee8d4" opacity="0.6"/></g>
+          <path d="M400 280 C380 230,340 180,280 160 C240 148,220 170,230 200" stroke="#b2f2e8" stroke-width="1.2" fill="none" class="wing-edgeR"/>
+        </g>
+        <g class="right-wingR">
+          <path d="M400 280 C420 230,460 180,520 160 C560 148,580 170,570 200 C560 240,530 270,500 290 C470 305,430 300,400 285Z" fill="url(#wingGradientR)" stroke="#1a8a72" stroke-width="0.5" opacity="0.85"/>
+          <path d="M400 285 C430 300,470 320,500 350 C520 370,530 390,515 400 C490 410,450 390,425 360 C410 340,405 310,400 290Z" fill="url(#wingGradient2R)" stroke="#1a8a72" stroke-width="0.5" opacity="0.78"/>
+          <g class="wing-patternR" style="animation-delay:0.5s"><ellipse cx="490" cy="210" rx="16" ry="12" fill="#0d6b5a" opacity="0.6"/><ellipse cx="490" cy="210" rx="10" ry="7" fill="#5ee6cc" opacity="0.5"/><ellipse cx="490" cy="210" rx="4" ry="2.5" fill="#b2f2e8" opacity="0.7"/><path d="M400 280 C430 260,460 240,500 220" stroke="#0d8a72" stroke-width="0.7" fill="none" opacity="0.4"/><path d="M400 285 C440 310,470 340,490 365" stroke="#0d8a72" stroke-width="0.5" fill="none" opacity="0.3"/><circle cx="480" cy="360" r="6" fill="#0d6b5a" opacity="0.5"/><circle cx="480" cy="360" r="3" fill="#7ee8d4" opacity="0.6"/></g>
+          <path d="M400 280 C420 230,460 180,520 160 C560 148,580 170,570 200" stroke="#b2f2e8" stroke-width="1.2" fill="none" class="wing-edgeR"/>
+        </g>
+        <g class="body-pulseR">
+          <ellipse cx="400" cy="290" rx="3.5" ry="35" fill="url(#bodyGradientR)"/>
+          <ellipse cx="400" cy="270" rx="4" ry="4" fill="#1a6b5c"/><ellipse cx="400" cy="285" rx="3.5" ry="4" fill="#155a4e"/><ellipse cx="400" cy="300" rx="3" ry="4" fill="#155a4e"/><ellipse cx="400" cy="315" rx="2.5" ry="4" fill="#1a6b5c"/><ellipse cx="400" cy="325" rx="2" ry="3.5" fill="#0d4a3f"/>
+        </g>
+        <g class="antenna-lR"><path d="M398 255 C390 230,375 210,365 195" stroke="#0d4a3f" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="365" cy="195" r="2" fill="#5ee6cc" filter="url(#particleGlowR)"/></g>
+        <g class="antenna-rR"><path d="M402 255 C410 230,425 210,435 195" stroke="#0d4a3f" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="435" cy="195" r="2" fill="#5ee6cc" filter="url(#particleGlowR)"/></g>
+        <circle cx="320" cy="250" r="2.5" fill="#5ee6cc" filter="url(#particleGlowR)" class="particleR" style="--dx:-45px;--dy:-50px"/>
+        <circle cx="480" cy="240" r="2" fill="#7ee8d4" filter="url(#particleGlowR)" class="particleR" style="--dx:55px;--dy:-40px;animation-delay:0.5s"/>
+        <circle cx="280" cy="300" r="1.5" fill="#3dd4b8" filter="url(#particleGlowR)" class="particleR" style="--dx:-60px;--dy:-20px;animation-delay:1s"/>
+        <circle cx="520" cy="260" r="3" fill="#b2f2e8" filter="url(#particleGlowR)" class="particleR" style="--dx:45px;--dy:-55px;animation-delay:1.5s"/>
+        <circle cx="350" cy="380" r="1.5" fill="#5ee6cc" filter="url(#particleGlowR)" class="particleR" style="--dx:-35px;--dy:35px;animation-delay:2s"/>
+        <circle cx="460" cy="370" r="2" fill="#7ee8d4" filter="url(#particleGlowR)" class="particleR" style="--dx:50px;--dy:25px;animation-delay:2.5s"/>
+      </g>
     </svg>
   </div>
-  <!-- 右下，中 -->
-  <div class="bfly bfly-2">
-    <svg viewBox="0 0 100 80" aria-hidden="true">
-      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
-      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
-      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
-      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
-    </svg>
-  </div>
-  <!-- 右上，中 -->
-  <div class="bfly bfly-3">
-    <svg viewBox="0 0 100 80" aria-hidden="true">
-      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
-      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
-      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
-      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
-    </svg>
-  </div>
-  <!-- 左中，小 -->
-  <div class="bfly bfly-4">
-    <svg viewBox="0 0 100 80" aria-hidden="true">
-      <path class="w-up" d="M50,38 C28,12 8,16 5,32 C2,48 28,52 50,38Z"/>
-      <path class="w-up" d="M50,38 C72,12 92,16 95,32 C98,48 72,52 50,38Z"/>
-      <path class="w-dn" d="M50,38 C38,58 18,68 10,74 C22,78 48,55 50,40Z"/>
-      <path class="w-dn" d="M50,38 C62,58 82,68 90,74 C78,78 52,55 50,40Z"/>
+
+  <!-- 左侧，较小 -->
+  <div class="bfly bfly--left">
+    <svg viewBox="0 0 800 600" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="wingGradientL" cx="30%" cy="30%" r="70%">
+          <stop offset="0%" style="stop-color:#b2f2e8;stop-opacity:0.8"/>
+          <stop offset="30%" style="stop-color:#5ee6cc;stop-opacity:0.7"/>
+          <stop offset="60%" style="stop-color:#26c4a8;stop-opacity:0.6"/>
+          <stop offset="100%" style="stop-color:#0d8a72;stop-opacity:0.45"/>
+        </radialGradient>
+        <radialGradient id="wingGradient2L" cx="70%" cy="30%" r="70%">
+          <stop offset="0%" style="stop-color:#c8f7ef;stop-opacity:0.65"/>
+          <stop offset="40%" style="stop-color:#7ee8d4;stop-opacity:0.55"/>
+          <stop offset="70%" style="stop-color:#3dd4b8;stop-opacity:0.48"/>
+          <stop offset="100%" style="stop-color:#15a088;stop-opacity:0.35"/>
+        </radialGradient>
+        <linearGradient id="bodyGradientL" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#1a6b5c"/>
+          <stop offset="50%" style="stop-color:#0d4a3f"/>
+          <stop offset="100%" style="stop-color:#1a6b5c"/>
+        </linearGradient>
+        <filter id="softGlowL" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="particleGlowL" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <style>
+        .bfly-gL { animation: floatBL 8s ease-in-out infinite; transform-origin: 400px 300px; }
+        @keyframes floatBL { 0%,100% { transform:translate(0,0) rotate(0deg) } 25% { transform:translate(-14px,-20px) rotate(-3deg) } 50% { transform:translate(10px,-28px) rotate(2deg) } 75% { transform:translate(18px,-10px) rotate(-2deg) } }
+        .left-wingL { animation: flapLL 3.5s ease-in-out infinite; transform-origin:400px 280px; }
+        @keyframes flapLL { 0%,100% { transform:scaleX(1) rotate(0deg) } 50% { transform:scaleX(0.5) rotate(-3deg) } }
+        .right-wingL { animation: flapRL 3.5s ease-in-out infinite; transform-origin:400px 280px; }
+        @keyframes flapRL { 0%,100% { transform:scaleX(1) rotate(0deg) } 50% { transform:scaleX(0.5) rotate(3deg) } }
+        .particleL { animation: floatPL 4.5s ease-in-out infinite; }
+        @keyframes floatPL { 0% { opacity:0; transform:translate(0,0) scale(0.5) } 20% { opacity:1 } 80% { opacity:0.6 } 100% { opacity:0; transform:translate(var(--dx),var(--dy)) scale(1.2) } }
+        .wing-patternL { animation: shimmerL 5s ease-in-out infinite; }
+        @keyframes shimmerL { 0%,100% { opacity:0.45 } 50% { opacity:0.85 } }
+        .wing-edgeL { animation: edgeGlowL 3.5s ease-in-out infinite; }
+        @keyframes edgeGlowL { 0%,100% { stroke-opacity:0.25 } 50% { stroke-opacity:0.6 } }
+        .body-pulseL { animation: bodyPulseL 2.2s ease-in-out infinite; }
+        @keyframes bodyPulseL { 0%,100% { opacity:0.8 } 50% { opacity:1 } }
+        .antenna-lL { animation: antSwayLL 5s ease-in-out infinite; transform-origin:398px 250px; }
+        @keyframes antSwayLL { 0%,100% { transform:rotate(0deg) } 50% { transform:rotate(2.5deg) } }
+        .antenna-rL { animation: antSwayRL 5s ease-in-out infinite reverse; transform-origin:402px 250px; }
+        @keyframes antSwayRL { 0%,100% { transform:rotate(0deg) } 50% { transform:rotate(2.5deg) } }
+        .lspotL { animation: lightMoveL 10s ease-in-out infinite; }
+        @keyframes lightMoveL { 0%,100% { transform:translate(0,0); opacity:0.2 } 25% { transform:translate(-15px,-10px); opacity:0.4 } 50% { transform:translate(10px,-15px); opacity:0.25 } 75% { transform:translate(15px,6px); opacity:0.45 } }
+      </style>
+      <g class="lspotL" opacity="0.2"><circle cx="180" cy="120" r="28" fill="#5ee6cc" filter="url(#softGlowL)"/></g>
+      <g class="lspotL" style="animation-delay:3s" opacity="0.15"><circle cx="620" cy="190" r="20" fill="#7ee8d4" filter="url(#softGlowL)"/></g>
+      <g class="bfly-gL" filter="url(#softGlowL)">
+        <circle cx="450" cy="320" r="2" fill="#5ee6cc" filter="url(#particleGlowL)" class="particleL" style="--dx:-35px;--dy:-40px"/>
+        <circle cx="430" cy="310" r="1.5" fill="#7ee8d4" filter="url(#particleGlowL)" class="particleL" style="--dx:45px;--dy:-35px;animation-delay:0.8s"/>
+        <circle cx="460" cy="300" r="1.5" fill="#3dd4b8" filter="url(#particleGlowL)" class="particleL" style="--dx:-50px;--dy:-20px;animation-delay:1.5s"/>
+        <g class="left-wingL">
+          <path d="M400 280 C380 230,340 180,280 160 C240 148,220 170,230 200 C240 240,270 270,300 290 C330 305,370 300,400 285Z" fill="url(#wingGradientL)" stroke="#1a8a72" stroke-width="0.5" opacity="0.8"/>
+          <path d="M400 285 C370 300,330 320,300 350 C280 370,270 390,285 400 C310 410,350 390,375 360 C390 340,395 310,400 290Z" fill="url(#wingGradient2L)" stroke="#1a8a72" stroke-width="0.5" opacity="0.72"/>
+          <g class="wing-patternL"><ellipse cx="310" cy="210" rx="14" ry="10" fill="#0d6b5a" opacity="0.5"/><ellipse cx="310" cy="210" rx="8" ry="5" fill="#5ee6cc" opacity="0.45"/><ellipse cx="310" cy="210" rx="3" ry="2" fill="#b2f2e8" opacity="0.6"/><path d="M400 280 C370 260,340 240,300 220" stroke="#0d8a72" stroke-width="0.6" fill="none" opacity="0.35"/><circle cx="320" cy="360" r="5" fill="#0d6b5a" opacity="0.45"/><circle cx="320" cy="360" r="2.5" fill="#7ee8d4" opacity="0.5"/></g>
+          <path d="M400 280 C380 230,340 180,280 160 C240 148,220 170,230 200" stroke="#b2f2e8" stroke-width="1" fill="none" class="wing-edgeL"/>
+        </g>
+        <g class="right-wingL">
+          <path d="M400 280 C420 230,460 180,520 160 C560 148,580 170,570 200 C560 240,530 270,500 290 C470 305,430 300,400 285Z" fill="url(#wingGradientL)" stroke="#1a8a72" stroke-width="0.5" opacity="0.8"/>
+          <path d="M400 285 C430 300,470 320,500 350 C520 370,530 390,515 400 C490 410,450 390,425 360 C410 340,405 310,400 290Z" fill="url(#wingGradient2L)" stroke="#1a8a72" stroke-width="0.5" opacity="0.72"/>
+          <g class="wing-patternL" style="animation-delay:0.7s"><ellipse cx="490" cy="210" rx="14" ry="10" fill="#0d6b5a" opacity="0.5"/><ellipse cx="490" cy="210" rx="8" ry="5" fill="#5ee6cc" opacity="0.45"/><ellipse cx="490" cy="210" rx="3" ry="2" fill="#b2f2e8" opacity="0.6"/><path d="M400 280 C430 260,460 240,500 220" stroke="#0d8a72" stroke-width="0.6" fill="none" opacity="0.35"/><circle cx="480" cy="360" r="5" fill="#0d6b5a" opacity="0.45"/><circle cx="480" cy="360" r="2.5" fill="#7ee8d4" opacity="0.5"/></g>
+          <path d="M400 280 C420 230,460 180,520 160 C560 148,580 170,570 200" stroke="#b2f2e8" stroke-width="1" fill="none" class="wing-edgeL"/>
+        </g>
+        <g class="body-pulseL">
+          <ellipse cx="400" cy="290" rx="3" ry="32" fill="url(#bodyGradientL)"/>
+          <ellipse cx="400" cy="270" rx="3.5" ry="3.5" fill="#1a6b5c"/><ellipse cx="400" cy="285" rx="3" ry="3.5" fill="#155a4e"/><ellipse cx="400" cy="300" rx="2.5" ry="3.5" fill="#155a4e"/><ellipse cx="400" cy="315" rx="2" ry="3.5" fill="#1a6b5c"/><ellipse cx="400" cy="325" rx="1.5" ry="3" fill="#0d4a3f"/>
+        </g>
+        <g class="antenna-lL"><path d="M398 255 C390 230,375 210,365 195" stroke="#0d4a3f" stroke-width="1" fill="none" stroke-linecap="round"/><circle cx="365" cy="195" r="1.8" fill="#5ee6cc" filter="url(#particleGlowL)"/></g>
+        <g class="antenna-rL"><path d="M402 255 C410 230,425 210,435 195" stroke="#0d4a3f" stroke-width="1" fill="none" stroke-linecap="round"/><circle cx="435" cy="195" r="1.8" fill="#5ee6cc" filter="url(#particleGlowL)"/></g>
+        <circle cx="310" cy="240" r="2" fill="#5ee6cc" filter="url(#particleGlowL)" class="particleL" style="--dx:-40px;--dy:-45px"/>
+        <circle cx="490" cy="230" r="1.5" fill="#7ee8d4" filter="url(#particleGlowL)" class="particleL" style="--dx:50px;--dy:-35px;animation-delay:0.6s"/>
+        <circle cx="270" cy="290" r="1.2" fill="#3dd4b8" filter="url(#particleGlowL)" class="particleL" style="--dx:-55px;--dy:-15px;animation-delay:1.2s"/>
+        <circle cx="530" cy="250" r="2.5" fill="#b2f2e8" filter="url(#particleGlowL)" class="particleL" style="--dx:40px;--dy:-50px;animation-delay:1.8s"/>
+        <circle cx="340" cy="370" r="1.2" fill="#5ee6cc" filter="url(#particleGlowL)" class="particleL" style="--dx:-30px;--dy:30px;animation-delay:2.5s"/>
+      </g>
     </svg>
   </div>
 </div>
