@@ -12,6 +12,85 @@
 <button class="theme-btn" id="themeBtn" aria-label="切换深色模式">🌙</button>
 <main class="container" id="app"></main>
 <footer class="reveal" id="pageFooter" style="text-align:center;padding:2rem 0;font-size:0.78rem;color:var(--muted)"></footer>
+<div class="butterflies">
+  <!-- B1: top-right, large, slow drift -->
+  <div class="butterfly" style="top:8%;right:12%;width:42px;animation:drift-1 14s ease-in-out infinite;animation-delay:0s">
+    <svg viewBox="0 0 50 40">
+      <g class="wing-left" style="animation:flap-upper-left 0.45s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
+      <g class="wing-right" style="animation:flap-upper-right 0.45s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
+      <g class="wing-lower-left" style="animation:flap-lower-left 0.5s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
+      <g class="wing-lower-right" style="animation:flap-lower-right 0.5s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
+      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
+      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
+      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
+    </svg>
+  </div>
+
+  <!-- B2: mid-left, small -->
+  <div class="butterfly" style="top:30%;left:6%;width:30px;animation:drift-2 16s ease-in-out infinite;animation-delay:2s">
+    <svg viewBox="0 0 50 40">
+      <g class="wing-left" style="animation:flap-upper-left 0.35s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
+      <g class="wing-right" style="animation:flap-upper-right 0.35s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
+      <g class="wing-lower-left" style="animation:flap-lower-left 0.4s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
+      <g class="wing-lower-right" style="animation:flap-lower-right 0.4s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
+      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
+      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
+      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
+    </svg>
+  </div>
+
+  <!-- B3: mid-right, medium, turn-around effect -->
+  <div class="butterfly" style="top:45%;right:8%;width:36px;animation:drift-3 18s ease-in-out infinite;animation-delay:5s">
+    <svg viewBox="0 0 50 40">
+      <g class="wing-left" style="animation:flap-upper-left 0.5s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
+      <g class="wing-right" style="animation:flap-upper-right 0.5s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
+      <g class="wing-lower-left" style="animation:flap-lower-left 0.55s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
+      <g class="wing-lower-right" style="animation:flap-lower-right 0.55s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
+      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
+      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
+      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
+    </svg>
+  </div>
+
+  <!-- B4: bottom-left, small -->
+  <div class="butterfly" style="top:65%;left:10%;width:28px;animation:drift-4 15s ease-in-out infinite;animation-delay:3s">
+    <svg viewBox="0 0 50 40">
+      <g class="wing-left" style="animation:flap-upper-left 0.4s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
+      <g class="wing-right" style="animation:flap-upper-right 0.4s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
+      <g class="wing-lower-left" style="animation:flap-lower-left 0.45s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
+      <g class="wing-lower-right" style="animation:flap-lower-right 0.45s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
+      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
+      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
+      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
+    </svg>
+  </div>
+
+  <!-- B5: top-center, medium -->
+  <div class="butterfly" style="top:12%;left:45%;width:34px;animation:drift-5 13s ease-in-out infinite;animation-delay:1s">
+    <svg viewBox="0 0 50 40">
+      <g class="wing-left" style="animation:flap-upper-left 0.38s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
+      <g class="wing-right" style="animation:flap-upper-right 0.38s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
+      <g class="wing-lower-left" style="animation:flap-lower-left 0.42s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
+      <g class="wing-lower-right" style="animation:flap-lower-right 0.42s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
+      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
+      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
+      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
+    </svg>
+  </div>
+
+  <!-- B6: bottom-right, tiny -->
+  <div class="butterfly" style="top:72%;right:15%;width:24px;animation:drift-6 17s ease-in-out infinite;animation-delay:6s">
+    <svg viewBox="0 0 50 40">
+      <g class="wing-left" style="animation:flap-upper-left 0.32s ease-in-out infinite alternate"><path d="M25,18 C20,6 4,8 4,18 C4,26 20,30 25,18Z"/></g>
+      <g class="wing-right" style="animation:flap-upper-right 0.32s ease-in-out infinite alternate"><path d="M25,18 C30,6 46,8 46,18 C46,26 30,30 25,18Z"/></g>
+      <g class="wing-lower-left" style="animation:flap-lower-left 0.36s ease-in-out infinite alternate"><path d="M25,20 C20,22 8,28 8,28 C8,28 20,34 25,22Z"/></g>
+      <g class="wing-lower-right" style="animation:flap-lower-right 0.36s ease-in-out infinite alternate"><path d="M25,20 C30,22 42,28 42,28 C42,28 30,34 25,22Z"/></g>
+      <line x1="25" y1="12" x2="25" y2="24" class="body-line" stroke-width="1.2"/>
+      <line x1="25" y1="12" x2="22" y2="8" class="body-line" stroke-width="0.6"/>
+      <line x1="25" y1="12" x2="28" y2="8" class="body-line" stroke-width="0.6"/>
+    </svg>
+  </div>
+</div>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
