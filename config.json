@@ -9,24 +9,24 @@
     "badge": "考研冲刺中",
     "signature": "习惯 · 个性 · 命运 · 人生",
     "links": [
-      { "text": "进入博客", "icon": "📖", "url": "/blog/" },
-      { "text": "GitHub", "icon": "🐙", "url": "https://github.com/smashxx00" }
+      { "text": "进入博客", "icon": "fas fa-pen-to-square", "url": "/blog/" },
+      { "text": "GitHub", "icon": "fab fa-github", "url": "https://github.com/smashxx00" }
     ]
   },
   "sections": [
     {
       "type": "cards",
-      "title": "🗓 现在",
+      "title": "现在",
       "columns": 3,
       "items": [
-        { "icon": "🔥", "title": "考研冲刺中", "text": "2026 入学 · 信号与系统 / 高数 / 英语 / 政治", "url": "/blog/kaoyan/" },
-        { "icon": "🛠", "title": "学点新东西", "text": "嵌入式与底层 · C / RTOS / STM32" },
-        { "icon": "💭", "title": "长期主义", "text": "不急，不停。写代码，做笔记，过日子。" }
+        { "icon": "fas fa-fire", "title": "考研冲刺中", "text": "2026 入学 · 信号与系统 / 高数 / 英语 / 政治", "url": "/blog/kaoyan/" },
+        { "icon": "fas fa-microchip", "title": "学点新东西", "text": "嵌入式与底层 · C / RTOS / STM32" },
+        { "icon": "fas fa-seedling", "title": "长期主义", "text": "不急，不停。写代码，做笔记，过日子。" }
       ]
     },
     {
       "type": "books",
-      "title": "📚 在读 & 在写",
+      "title": "在读 & 在写",
       "items": [
         { "title": "《你当像鸟飞往你的山》", "author": "塔拉·韦斯特弗", "note": "教育如何重塑一个人。" },
         { "title": "《深度关系》", "author": "武志红", "note": "自处与亲密的练习。" },
@@ -42,16 +42,16 @@
     },
     {
       "type": "cards",
-      "title": "🏃 身体在路上",
+      "title": "身体在路上",
       "columns": 2,
       "items": [
-        { "icon": "⛰", "title": "登山徒步", "text": "走出市内，去山里呼吸。" },
-        { "icon": "🏀", "title": "球类", "text": "篮球 / 羽毛球 / 乒乓，夜场开局。" }
+        { "icon": "fas fa-mountain", "title": "登山徒步", "text": "走出市内，去山里呼吸。" },
+        { "icon": "fas fa-futbol", "title": "球类", "text": "篮球 / 羽毛球 / 乒乓，夜场开局。" }
       ]
     },
     {
       "type": "timeline",
-      "title": "📍 时间线",
+      "title": "时间线",
       "items": [
         { "year": "2026", "title": "考研冲刺中", "text": "信号与系统 / 高数 / 英语 / 政治，每一天都在往目标靠近。" }
       ],
@@ -59,13 +59,13 @@
     },
     {
       "type": "entries",
-      "title": "🔗 入口",
+      "title": "入口",
       "columns": 2,
       "items": [
-        { "icon": "📝", "title": "技术博客", "text": "前端、嵌入式、项目实践与学习笔记", "url": "/blog/" },
-        { "icon": "📅", "title": "考研日记", "text": "每日复盘与学习记录，连续打卡与趋势", "url": "/blog/kaoyan/" },
-        { "icon": "👤", "title": "关于", "text": "这个站点的定位、内容方向和长期规划", "url": "/blog/about/" },
-        { "icon": "🐙", "title": "GitHub", "text": "@smashxx00", "url": "https://github.com/smashxx00" }
+        { "icon": "fas fa-blog", "title": "技术博客", "text": "前端、嵌入式、项目实践与学习笔记", "url": "/blog/" },
+        { "icon": "fas fa-calendar-check", "title": "考研日记", "text": "每日复盘与学习记录，连续打卡与趋势", "url": "/blog/kaoyan/" },
+        { "icon": "fas fa-circle-user", "title": "关于", "text": "这个站点的定位、内容方向和长期规划", "url": "/blog/about/" },
+        { "icon": "fab fa-github", "title": "GitHub", "text": "@smashxx00", "url": "https://github.com/smashxx00" }
       ]
     }
   ]

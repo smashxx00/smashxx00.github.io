@@ -74,7 +74,7 @@
           attrs.target = '_blank';
           attrs.rel = 'noopener';
         }
-        linksDiv.appendChild(h('a', attrs, [h('span', {}, [link.icon]), ' ' + link.text]));
+        linksDiv.appendChild(h('a', attrs, [h('i', { className: link.icon, style: { marginRight: '0.35rem' } }), link.text]));
       });
       frag.appendChild(linksDiv);
     }
@@ -86,7 +86,7 @@
     var items = section.items.map(function (item) {
       var cardAttrs = { className: 'card' };
       var kids = [];
-      if (item.icon) kids.push(h('span', { className: 'card-icon' }, [item.icon]));
+      if (item.icon) kids.push(h('span', { className: 'card-icon' }, [h('i', { className: item.icon })]));
       kids.push(h('h3', {}, [item.title]));
       if (item.text) kids.push(h('p', {}, [item.text]));
       if (item.url) {
@@ -152,7 +152,7 @@
       var attrs = { className: 'card', href: entry.url };
       if (entry.url && entry.url.indexOf('http') === 0) { attrs.target = '_blank'; attrs.rel = 'noopener'; }
       return h('a', attrs, [
-        h('span', { className: 'card-icon' }, [entry.icon]),
+        h('span', { className: 'card-icon' }, [h('i', { className: entry.icon })]),
         h('h3', {}, [entry.title]),
         entry.text ? h('p', {}, [entry.text]) : null
       ]);
@@ -185,8 +185,12 @@
 
   /* ---------- Utilities ---------- */
 
-  function wrapSection(title, body) {
-    var sec = h('section', { className: 'section' });
+  var sectionIndex = 0;
+
+  function wrapSection(title, body, alt) {
+    var cls = 'section';
+    if (alt) cls += ' section-alt';
+    var sec = h('section', { className: cls });
     if (title) sec.appendChild(h('h2', { className: 'section-title reveal' }, [title]));
     sec.appendChild(body);
     return sec;
@@ -216,7 +220,8 @@
     // hero
     if (config.hero) root.appendChild(renderHero(config, config.hero));
 
-    // sections
+    // sections (alternate background for visual rhythm)
+    var secCount = 0;
     (config.sections || []).forEach(function (sec) {
       var el = null;
       switch (sec.type) {
@@ -228,6 +233,11 @@
         case 'divider':  el = renderDivider(); break;
         case 'text':     el = renderText(sec); break;
         default: break;
+      }
+      // Alternate section backgrounds for visual breathing room
+      if (el && sec.type !== 'hero' && sec.type !== 'divider') {
+        secCount++;
+        if (secCount % 2 === 0) el.classList.add('section-alt');
       }
       if (el) root.appendChild(el);
     });
