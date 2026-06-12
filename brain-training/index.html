@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Brain Training · 认知训练</title>
+<style>
+/* ═══════════ Design Tokens — 博客色系 ═══════════ */
+:root {
+  --bg: #f5f7fa;
+  --card: #fff;
+  --text: #1f2a36;
+  --muted: #6f7c8a;
+  --accent: #1f7a8c;
+  --accent-light: rgba(31,122,140,0.1);
+  --accent-grad: linear-gradient(135deg, #1f7a8c, #176b7e);
+  --warm: #ef8f5a;
+  --warm-light: rgba(239,143,90,0.1);
+  --gold: #f2c879;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --border: #e8ecf0;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(15,23,42,0.06);
+  --shadow-lg: 0 8px 32px rgba(15,23,42,0.1);
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; padding: 20px 16px 40px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ═══════════ Container ═══════════ */
+.app {
+  width: 100%; max-width: 520px;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* ═══════════ Header ═══════════ */
+.header {
+  padding: 28px 24px 0;
+  text-align: center;
+}
+.header-icon {
+  width: 56px; height: 56px; margin: 0 auto 12px;
+  border-radius: 16px;
+  background: var(--accent-grad);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: #fff;
+  box-shadow: 0 8px 24px rgba(31,122,140,0.25);
+}
+.header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 4px; }
+.header p { font-size: 13px; color: var(--muted); }
+
+/* ═══════════ Tab Nav ═══════════ */
+.tabs {
+  display: flex; gap: 6px; padding: 20px 20px 16px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.tab {
+  flex: 1 0 auto; min-width: fit-content;
+  padding: 10px 16px; border-radius: 999px;
+  border: 1.5px solid var(--border); background: #fff;
+  color: var(--muted); cursor: pointer;
+  font-size: 13px; font-weight: 600;
+  transition: all 0.2s var(--ease);
+  white-space: nowrap; text-align: center;
+}
+.tab:hover { border-color: var(--accent); color: var(--accent); }
+.tab.active {
+  background: var(--accent-grad); color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(31,122,140,0.25);
+}
+
+/* ═══════════ Screens ═══════════ */
+.screen { display: none; padding: 0 20px 20px; }
+.screen.active { display: block; animation: fadeIn 0.3s var(--ease); }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* ═══════════ Settings ═══════════ */
+.settings-section { margin-bottom: 22px; }
+.settings-label { display: block; font-weight: 700; color: var(--text); margin-bottom: 6px; font-size: 14px; }
+.settings-desc { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+.option-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.option {
+  flex: 1; min-width: 44px; padding: 10px 0;
+  border: 2px solid var(--border); background: #fff;
+  border-radius: var(--radius-sm); cursor: pointer;
+  font-weight: 600; font-size: 14px; color: var(--text);
+  transition: all 0.15s var(--ease); text-align: center;
+}
+.option:hover { border-color: var(--accent); }
+.option.active { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+
+.rule-box {
+  background: #f8fafb; padding: 14px 16px;
+  border-radius: var(--radius-sm); margin: 16px 0;
+  font-size: 12px; line-height: 1.6; color: var(--muted);
+  border-left: 3px solid var(--accent);
+}
+.rule-box h3 { color: var(--text); font-size: 13px; margin-bottom: 4px; }
+
+/* ═══════════ Buttons ═══════════ */
+.btn {
+  display: block; width: 100%; padding: 14px;
+  border: none; border-radius: 999px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: all 0.2s var(--ease);
+  font-family: inherit; letter-spacing: 0.02em;
+  margin-top: 10px;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--accent-grad); color: #fff; box-shadow: 0 4px 14px rgba(31,122,140,0.25); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-go {
+  background: var(--green); color: #fff;
+  box-shadow: 0 4px 14px rgba(39,174,96,0.25);
+}
+.btn-nogo {
+  background: var(--red); color: #fff;
+  box-shadow: 0 4px 14px rgba(231,76,60,0.25);
+}
+
+/* ═══════════ Game Area ═══════════ */
+.game-area {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+  padding: 20px 0 10px;
+}
+
+/* N-Back grid */
+.nb-grid {
+  display: grid; grid-template-columns:repeat(3,1fr);
+  gap: 12px; max-width: 270px; width: 100%;
+}
+.nb-cell {
+  aspect-ratio: 1; border-radius: var(--radius-sm);
+  background: #f0f3f5; transition: all 0.15s ease;
+}
+.nb-cell.active { background: var(--accent); box-shadow: 0 0 20px rgba(31,122,140,0.5); }
+
+/* PVT stimulus */
+.pvt-stim {
+  width: 140px; height: 140px; border-radius: 24px;
+  background: #f0f3f5; transition: background 0.05s;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--muted);
+}
+
+/* Go/No-Go stimulus */
+.gng-stim {
+  width: 100px; height: 100px; border-radius: 50%;
+  background: #f0f3f5; transition: all 0.15s ease;
+}
+.gng-stim.go { background: var(--green); box-shadow: 0 0 30px rgba(39,174,96,0.4); }
+.gng-stim.nogo { background: var(--red); box-shadow: 0 0 30px rgba(231,76,60,0.4); }
+
+/* Visual Span grid */
+.vs-grid { display: grid; gap: 6px; justify-content: center; }
+.vs-cell {
+  width: 42px; height: 42px; border-radius: 8px;
+  background: #f0f3f5; border: 2px solid transparent;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.vs-cell.show { background: var(--accent); border-color: var(--accent); }
+.vs-cell.picked { border-color: var(--warm); box-shadow: 0 0 0 2px var(--warm); }
+
+/* Key/Action cards */
+.action-row {
+  display: flex; gap: 12px; width: 100%; max-width: 360px;
+}
+.action-card {
+  flex: 1; padding: 16px 10px;
+  background: #f8fafb; border-radius: var(--radius-sm);
+  text-align: center; cursor: pointer;
+  transition: all 0.1s ease; user-select: none;
+  border: 2px solid transparent;
+}
+.action-card:active { transform: scale(0.96); }
+.action-card.go-card { border-color: rgba(39,174,96,0.3); }
+.action-card.nogo-card { border-color: rgba(231,76,60,0.3); }
+.action-key { font-size: 22px; font-weight: 800; }
+.action-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* ═══════════ Stats ═══════════ */
+.stats-row {
+  display: flex; gap: 12px; width: 100%;
+  justify-content: center; flex-wrap: wrap;
+}
+.stat-card {
+  text-align: center; min-width: 60px;
+  padding: 8px 12px; background: #f8fafb;
+  border-radius: var(--radius-sm);
+}
+.stat-val { font-size: 20px; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ═══════════ Progress ═══════════ */
+.progress-bar {
+  width: 100%; height: 4px; background: #f0f3f5;
+  border-radius: 2px; overflow: hidden;
+}
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.3s linear; }
+
+/* ═══════════ Feedback ═══════════ */
+.feedback { font-size: 15px; font-weight: 600; height: 24px; }
+.feedback.correct { color: var(--green); }
+.feedback.wrong { color: var(--red); }
+
+/* ═══════════ Results ═══════════ */
+.result-card {
+  background: #f8fafb; padding: 16px;
+  border-radius: var(--radius-sm); margin: 12px 0;
+}
+.result-row {
+  display: flex; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.result-row:last-child { border-bottom: none; }
+.result-row span:last-child { font-weight: 700; }
+
+/* ═══════════ Countdown ═══════════ */
+.countdown { font-size: 64px; font-weight: 800; color: var(--accent); text-align: center; margin: 20px 0; }
+
+/* ═══════════ History ═══════════ */
+.history { margin-top: 10px; }
+.history h3 { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+.history-card {
+  background: #f8fafb; padding: 10px 14px; border-radius: var(--radius-sm);
+  margin-bottom: 6px; font-size: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.history-date { color: var(--muted); }
+.history-score { font-weight: 700; color: var(--accent); }
+
+@media (max-width: 480px) {
+  body { padding: 12px 8px 32px; }
+  .header { padding: 20px 16px 0; }
+  .screen { padding: 0 16px 16px; }
+  .tabs { padding: 16px 12px 12px; gap: 4px; }
+  .tab { padding: 8px 10px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="app" id="app"></div>
+
+<script>
+// ═══════════ App State ═══════════
+const GAMES = {
+  nback: { name: 'Dual N-Back', icon: '🔄', desc: '工作记忆训练' },
+  pvt:   { name: '反应冲刺', icon: '⚡', desc: '瞬时警觉训练' },
+  gng:   { name: '信号检测', icon: '🎯', desc: '持续性专注力训练' },
+  vs:    { name: '记忆匹配', icon: '🧩', desc: '视觉工作记忆训练' },
+};
+let currentGame = 'nback';
+let sessionActive = false;
+let history = JSON.parse(localStorage.getItem('brain-history') || '[]');
+
+const app = document.getElementById('app');
+
+function h(tag, attrs = {}, ...children) {
+  const el = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k.startsWith('on')) el.addEventListener(k.slice(2).toLowerCase(), v);
+    else if (k === 'className') el.className = v;
+    else if (k === 'text') el.textContent = v;
+    else if (k === 'html') el.innerHTML = v;
+    else el.setAttribute(k, v);
+  });
+  children.forEach(c => { if (c != null) el.append(typeof c === 'string' ? document.createTextNode(c) : c); });
+  return el;
+}
+
+function saveHistory(result) {
+  history.unshift({ ...result, game: currentGame, date: new Date().toLocaleDateString('zh-CN'), time: new Date().toLocaleTimeString('zh-CN', { hour:'2-digit', minute:'2-digit' }) });
+  if (history.length > 50) history = history.slice(0, 50);
+  localStorage.setItem('brain-history', JSON.stringify(history));
+  render();
+}
+
+// ═══════════ Render ═══════════
+function render(forceGame) {
+  if (forceGame) currentGame = forceGame;
+  sessionActive = false;
+  app.innerHTML = '';
+
+  const header = h('div', { className: 'header' },
+    h('div', { className: 'header-icon', text: '🧠' }),
+    h('h1', {}, '认知训练中心'),
+    h('p', {}, `${GAMES[currentGame].icon} ${GAMES[currentGame].name} · ${GAMES[currentGame].desc}`),
+  );
+
+  const tabs = h('div', { className: 'tabs' });
+  Object.entries(GAMES).forEach(([id, g]) => {
+    tabs.appendChild(h('button', {
+      className: `tab${id === currentGame ? ' active' : ''}`,
+      text: `${g.icon} ${g.name}`,
+      onclick: () => render(id),
+    }));
+  });
+
+  const screen = h('div', { className: 'screen active' });
+  const renderGame = gameRenderers[currentGame];
+  renderGame(screen);
+
+  // History
+  const histSection = h('div', { className: 'history' });
+  const gameHistory = history.filter(e => e.game === currentGame).slice(0, 5);
+  if (gameHistory.length) {
+    histSection.appendChild(h('h3', {}, `📊 ${GAMES[currentGame].name} · 最近记录`));
+    const colLabels = {
+      nback: ['日期','N值','轮次','命中','漏报','误报'],
+      pvt: ['日期','次数','平均RT','最快','漏掉'],
+      gng: ['日期','Go数','命中','误报','漏报'],
+      vs: ['日期','大小','轮次','正确数'],
+    };
+    gameHistory.forEach(entry => {
+      const vals = {
+        nback: [entry.date, entry.n, entry.trials, entry.hits, entry.misses, entry.falseAlarms],
+        pvt: [entry.date, entry.count, entry.avgRt+'ms', entry.minRt+'ms', entry.lapses],
+        gng: [entry.date, entry.goCount, entry.hits, entry.falseAlarms, entry.misses],
+        vs: [entry.date, entry.gridSize, entry.rounds, entry.correct],
+      }[currentGame];
+      histSection.appendChild(h('div', { className: 'history-card' },
+        h('span', { className: 'history-date', text: `${entry.date} ${entry.time}` }),
+        h('span', { className: 'history-score', text: vals.slice(2).join(' · ') }),
+      ));
+    });
+  }
+
+  app.append(header, tabs, screen, histSection);
+}
+
+// ═══════════ N-BACK ═══════════
+const nbackRender = renderNBack();
+function renderNBack() {
+  let state = {
+    n: 2, trials: 20, sequence: [], idx: 0,
+    hits: 0, misses: 0, falseAlarms: 0, timer: null,
+    positions: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:1,c:0},{r:1,c:1},{r:1,c:2},{r:2,c:0},{r:2,c:1},{r:2,c:2}],
+  };
+
+  function renderSettings(parent) {
+    parent.innerHTML = '';
+    parent.append(
+      h('div', { className: 'settings-section' },
+        h('label', { className: 'settings-label', text: 'N 值' }),
+        h('p', { className: 'settings-desc', text: 'N 越大越难。建议从 2-Back 开始，熟练后尝试 3-Back' }),
+        h('div', { className: 'option-row' },
+          ...[1,2,3,4].map(n => h('button', {
+            className: `option${n === state.n ? ' active' : ''}`,
+            text: `${n}-Back`,
+            onclick() { state.n = n; renderSettings(parent); },
+          })),
+        ),
+      ),
+      h('div', { className: 'settings-section' },
+        h('label', { className: 'settings-label', text: '训练轮数' }),
+        h('div', { className: 'option-row' },
+          ...[10,15,20,25].map(t => h('button', {
+            className: `option${t === state.trials ? ' active' : ''}`,
+            text: `${t} 轮`,
+            onclick() { state.trials = t; renderSettings(parent); },
+          })),
+        ),
+      ),
+      h('div', { className: 'rule-box' },
+        h('h3', {}, '📋 规则'),
+        h('p', {}, `方块在 3×3 网格中依次亮起。如果当前方块位置与 N 步前相同（位置匹配），按 Go 或空格键。`),
+      ),
+      h('button', { className: 'btn btn-primary', text: '🚀 开始训练', onclick() { startGame(parent); } }),
+    );
+  }
+
+  function startGame(parent) {
+    sessionActive = true; state.idx = 0; state.hits = 0; state.misses = 0; state.falseAlarms = 0;
+    state.sequence = Array.from({ length: state.trials + state.n }, () => Math.floor(Math.random() * 9));
+    renderGameScreen(parent);
+    showStimulus();
+  }
+
+  let gridEls = [];
+  function renderGameScreen(parent) {
+    parent.innerHTML = '';
+    const stats = h('div', { className: 'stats-row' },
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', text: '0', id: 'nbScore' }), h('div', { className: 'stat-label', text: '得分' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', text: `0/${state.trials}`, id: 'nbRound' }), h('div', { className: 'stat-label', text: '进度' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', text: `${state.n}-Back`, id: 'nbLevel' }), h('div', { className: 'stat-label', text: '难度' })),
+    );
+    const grid = h('div', { className: 'nb-grid' });
+    gridEls = [];
+    for (let i = 0; i < 9; i++) {
+      gridEls.push(h('div', { className: 'nb-cell' }));
+      grid.appendChild(gridEls[i]);
+    }
+    const feedback = h('div', { className: 'feedback' });
+    const progress = h('div', { className: 'progress-bar' }, h('div', { className: 'progress-fill', id: 'nbProgress' }));
+    const actions = h('div', { className: 'action-row' },
+      h('div', { className: 'action-card go-card', onclick() { respond(true); } },
+        h('div', { className: 'action-key', text: 'A' }),
+        h('div', { className: 'action-label', text: '位置匹配 (Go)' }),
+      ),
+      h('div', { className: 'action-card', onclick() { respond(false); } },
+        h('div', { className: 'action-key', text: 'D' }),
+        h('div', { className: 'action-label', text: '不匹配 (No Go)' }),
+      ),
+    );
+    parent.append(stats, grid, feedback, progress, actions);
+
+    document.addEventListener('keydown', function nbKey(e) {
+      if (currentGame !== 'nback' || !sessionActive || state.idx < state.n) return;
+      if (e.key === 'a' || e.key === 'A' || e.code === 'Space') { e.preventDefault(); respond(true); }
+      if (e.key === 'd' || e.key === 'D') { e.preventDefault(); respond(false); }
+    });
+  }
+
+  function showStimulus() {
+    if (state.idx >= state.sequence.length) {
+      const totalHits = state.hits + state.misses;
+      const score = totalHits ? Math.round(state.hits / totalHits * 100) : 0;
+      saveHistory({ n: state.n, trials: state.trials, hits: state.hits, misses: state.misses, falseAlarms: state.falseAlarms, score });
+      render();
+      return;
+    }
+    gridEls.forEach(c => c.classList.remove('active'));
+    gridEls[state.sequence[state.idx]].classList.add('active');
+    const score = Math.max(0, state.hits * 5 - state.falseAlarms * 3);
+    document.getElementById('nbScore').textContent = score;
+    document.getElementById('nbRound').textContent = `${Math.max(0, state.idx - state.n + 1)}/${state.trials}`;
+    document.getElementById('nbProgress').style.width = `${Math.min(100, (state.idx - state.n + 1) / state.trials * 100)}%`;
+
+    state.timer = setTimeout(() => {
+      gridEls.forEach(c => c.classList.remove('active'));
+      state.timer = setTimeout(() => {
+        if (state.idx >= state.n && !state.respondedThis) state.misses++;
+        state.respondedThis = false;
+        state.idx++;
+        showStimulus();
+      }, 1500);
+    }, 800);
+  }
+
+  function respond(isMatch) {
+    if (!sessionActive || state.idx < state.n || state.respondedThis) return;
+    clearTimeout(state.timer);
+    state.respondedThis = true;
+    const actual = state.idx >= state.n && state.sequence[state.idx] === state.sequence[state.idx - state.n];
+    const fb = document.querySelector('.feedback');
+    if (actual && isMatch) { state.hits++; fb.textContent = '✓ 正确！'; fb.className = 'feedback correct'; }
+    else if (!actual && !isMatch) { fb.textContent = '✓ 正确！'; fb.className = 'feedback correct'; }
+    else if (actual && !isMatch) { state.misses++; fb.textContent = '漏掉了 😟'; fb.className = 'feedback wrong'; }
+    else { state.falseAlarms++; fb.textContent = '误报 ✗'; fb.className = 'feedback wrong'; }
+    state.idx++;
+    showStimulus();
+  }
+
+  return (parent) => renderSettings(parent);
+}
+
+// ═══════════ PVT ═══════════
+function renderPVT(parent) {
+  let state = { count: 0, rts: [], lapses: 0, maxTrials: 20, trialStart: 0, timer: null };
+  parent.innerHTML = '';
+
+  parent.append(
+    h('div', { className: 'settings-section' },
+      h('label', { className: 'settings-label', text: '训练次数' }),
+      h('div', { className: 'option-row' },
+        ...[10, 15, 20, 30].map(t => h('button', {
+          className: `option${t === state.maxTrials ? ' active' : ''}`,
+          text: `${t} 次`, onclick() { state.maxTrials = t; renderPVT(parent); },
+        })),
+      ),
+    ),
+    h('div', { className: 'rule-box' },
+      h('h3', {}, '📋 规则'),
+      h('p', {}, '屏幕显示「等待…」，变红后尽快点击屏幕任意位置或按空格键。测量你的反应时间。'),
+    ),
+    h('div', { className: 'game-area', id: 'pvtGame' }),
+    h('button', { className: 'btn btn-primary', text: '⚡ 开始训练', onclick() { startPVT(parent); } }),
+  );
+
+  function startPVT(parent) {
+    sessionActive = true; state.count = 0; state.rts = []; state.lapses = 0;
+    parent.innerHTML = '';
+    const stats = h('div', { className: 'stats-row' },
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'pvtAvg', text: '--' }), h('div', { className: 'stat-label', text: '平均 ms' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'pvtBest', text: '--' }), h('div', { className: 'stat-label', text: '最快 ms' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'pvtCnt', text: '0/20' }), h('div', { className: 'stat-label', text: '次数' })),
+    );
+    const stim = h('div', { className: 'pvt-stim', text: '等待…', id: 'pvtStim' });
+    const msg = h('div', { className: 'feedback' });
+
+    stim.addEventListener('click', () => handlePVT());
+    document.addEventListener('keydown', e => { if (e.code === 'Space' && sessionActive) { e.preventDefault(); handlePVT(); } });
+
+    function handlePVT() {
+      if (state.trialStart === 0) return;
+      clearTimeout(state.timer);
+      const rt = Math.round(performance.now() - state.trialStart);
+      state.rts.push(rt);
+      state.trialStart = 0;
+      stim.style.background = '#f0f3f5'; stim.textContent = `${rt} ms`;
+      document.getElementById('pvtAvg').textContent = Math.round(state.rts.reduce((a,b)=>a+b)/state.rts.length);
+      document.getElementById('pvtBest').textContent = Math.min(...state.rts);
+      setTimeout(nextPVT, 800);
+    }
+
+    function nextPVT() {
+      if (state.count >= state.maxTrials) {
+        const avg = Math.round(state.rts.reduce((a,b)=>a+b,0)/state.rts.length);
+        saveHistory({ count: state.count, avgRt: avg, minRt: Math.min(...state.rts), maxRt: Math.max(...state.rts), lapses: state.lapses });
+        render(); return;
+      }
+      state.count++; document.getElementById('pvtCnt').textContent = `${state.count}/${state.maxTrials}`;
+      stim.style.background = '#f0f3f5'; stim.textContent = '等待…'; msg.textContent = '';
+      const delay = 2000 + Math.random() * 4000;
+      state.timer = setTimeout(() => {
+        stim.style.background = '#ef8f5a'; stim.textContent = '快按！';
+        state.trialStart = performance.now();
+        state.timer = setTimeout(() => { state.lapses++; stim.style.background = '#f0f3f5'; stim.textContent = '太慢'; state.trialStart = 0; setTimeout(nextPVT, 600); }, 3000);
+      }, delay);
+    }
+
+    parent.append(stats, stim, msg);
+    setTimeout(nextPVT, 1000);
+  }
+}
+
+// ═══════════ GO / NO-GO ═══════════
+function renderGNG(parent) {
+  let state = { goCount: 0, hits: 0, falseAlarms: 0, misses: 0, total: 0, maxTrials: 30, timer: null, isGo: false, responded: false };
+  parent.innerHTML = '';
+
+  parent.append(
+    h('div', { className: 'settings-section' },
+      h('label', { className: 'settings-label', text: '训练次数' }),
+      h('div', { className: 'option-row' },
+        ...[20, 30, 40].map(t => h('button', {
+          className: `option${t === state.maxTrials ? ' active' : ''}`,
+          text: `${t} 轮`, onclick() { state.maxTrials = t; renderGNG(parent); },
+        })),
+      ),
+    ),
+    h('div', { className: 'rule-box' },
+      h('h3', {}, '📋 规则'),
+      h('p', {}, '看到 🟢 绿色（Go 信号）按 Go 或空格；看到 🔴 红色（No-Go 信号）不要按。训练你的抑制控制能力。'),
+    ),
+    h('div', { className: 'game-area', id: 'gngGame' }),
+    h('button', { className: 'btn btn-primary', text: '🎯 开始训练', onclick() { startGNG(parent); } }),
+  );
+
+  function startGNG(parent) {
+    sessionActive = true; state.goCount = 0; state.hits = 0; state.falseAlarms = 0; state.misses = 0; state.total = 0;
+    parent.innerHTML = '';
+    const stats = h('div', { className: 'stats-row' },
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'gngScore', text: '0' }), h('div', { className: 'stat-label', text: '得分' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'gngAcc', text: '--%' }), h('div', { className: 'stat-label', text: '命中率' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'gngCnt', text: '0/30' }), h('div', { className: 'stat-label', text: '进度' })),
+    );
+    const stim = h('div', { className: 'gng-stim', id: 'gngStim' });
+    const msg = h('div', { className: 'feedback' });
+    const actions = h('div', { className: 'action-row' },
+      h('div', { className: 'action-card go-card', onclick() { handleGNG(true); } },
+        h('div', { className: 'action-key', text: 'GO' }),
+        h('div', { className: 'action-label', text: '按 (空格)' }),
+      ),
+      h('div', { className: 'action-card nogo-card', onclick() { handleGNG(false); } },
+        h('div', { className: 'action-key', text: 'NO' }),
+        h('div', { className: 'action-label', text: '不按 (N)' }),
+      ),
+    );
+    parent.append(stats, stim, msg, actions);
+
+    document.addEventListener('keydown', function gngKey(e) {
+      if (currentGame !== 'gng' || !sessionActive) return;
+      if (e.code === 'Space') { e.preventDefault(); handleGNG(true); }
+      if (e.key === 'n' || e.key === 'N') { e.preventDefault(); handleGNG(false); }
+    });
+
+    function handleGNG(pressGo) {
+      if (!sessionActive || state.responded) return;
+      clearTimeout(state.timer); state.responded = true;
+      if (state.isGo && pressGo) { state.hits++; msg.textContent = '✓'; msg.className = 'feedback correct'; }
+      else if (!state.isGo && !pressGo) { msg.textContent = '✓'; msg.className = 'feedback correct'; }
+      else if (state.isGo && !pressGo) { state.misses++; msg.textContent = '漏掉 ✗'; msg.className = 'feedback wrong'; }
+      else { state.falseAlarms++; msg.textContent = '误报 ✗'; msg.className = 'feedback wrong'; }
+      document.getElementById('gngScore').textContent = Math.max(0, state.hits*3 - state.falseAlarms*2 - state.misses);
+      document.getElementById('gngAcc').textContent = state.goCount ? Math.round(state.hits/state.goCount*100) + '%' : '--%';
+      setTimeout(nextGNG, 400);
+    }
+
+    function nextGNG() {
+      if (state.total >= state.maxTrials) {
+        saveHistory({ goCount: state.goCount, hits: state.hits, falseAlarms: state.falseAlarms, misses: state.misses, score: Math.max(0, state.hits*3-state.falseAlarms*2-state.misses) });
+        render(); return;
+      }
+      state.total++; state.responded = false;
+      state.isGo = Math.random() < 0.7;
+      if (state.isGo) state.goCount++;
+      stim.className = `gng-stim ${state.isGo ? 'go' : 'nogo'}`;
+      document.getElementById('gngCnt').textContent = `${state.total}/${state.maxTrials}`;
+      state.timer = setTimeout(() => {
+        if (!state.responded && state.isGo) state.misses++;
+        state.responded = true;
+        nextGNG();
+      }, 1000);
+    }
+
+    setTimeout(nextGNG, 500);
+  }
+}
+
+// ═══════════ VISUAL SPAN ═══════════
+function renderVS(parent) {
+  let state = { gridSize: 4, rounds: 8, round: 0, correct: 0, pattern: [], picks: [], maxItems: 3 };
+  parent.innerHTML = '';
+
+  parent.append(
+    h('div', { className: 'settings-section' },
+      h('label', { className: 'settings-label', text: '网格大小' }),
+      h('div', { className: 'option-row' },
+        ...[3,4,5].map(s => h('button', {
+          className: `option${s === state.gridSize ? ' active' : ''}`,
+          text: `${s}×${s}`, onclick() { state.gridSize = s; renderVS(parent); },
+        })),
+      ),
+    ),
+    h('div', { className: 'rule-box' },
+      h('h3', {}, '📋 规则'),
+      h('p', {}, '记住亮色方块的位置，消失后点选它们。回合越后，方块越多。训练视觉工作记忆。'),
+    ),
+    h('div', { className: 'game-area', id: 'vsGame' }),
+    h('button', { className: 'btn btn-primary', text: '🧩 开始训练', onclick() { startVS(parent); } }),
+  );
+
+  function startVS(parent) {
+    sessionActive = true; state.round = 0; state.correct = 0;
+    parent.innerHTML = '';
+    const stats = h('div', { className: 'stats-row' },
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'vsScore', text: '0' }), h('div', { className: 'stat-label', text: '得分' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'vsRound', text: '0/8' }), h('div', { className: 'stat-label', text: '轮次' })),
+      h('div', { className: 'stat-card' }, h('div', { className: 'stat-val', id: 'vsAcc', text: '--%' }), h('div', { className: 'stat-label', text: '正确率' })),
+    );
+    const grid = h('div', { className: 'vs-grid', id: 'vsGrid' });
+    grid.style.gridTemplateColumns = `repeat(${state.gridSize}, 42px)`;
+    grid.style.gridTemplateRows = `repeat(${state.gridSize}, 42px)`;
+    for (let i = 0; i < state.gridSize * state.gridSize; i++) {
+      const cell = h('div', { className: 'vs-cell', 'data-idx': i });
+      cell.addEventListener('click', () => {
+        if (!cell.classList.contains('show') && cell.classList.contains('pickable')) {
+          cell.classList.toggle('picked');
+          if (cell.classList.contains('picked')) state.picks.push(i);
+          else state.picks = state.picks.filter(p => p !== i);
+        }
+      });
+      grid.appendChild(cell);
+    }
+    const msg = h('div', { className: 'feedback' });
+    const btn = h('button', { className: 'btn btn-primary', text: '确认选择', onclick: checkVS, id: 'vsSubmit' });
+    btn.style.display = 'none';
+    parent.append(stats, grid, msg, btn);
+
+    function showRound() {
+      state.picks = [];
+      document.querySelectorAll('.vs-cell').forEach(c => { c.classList.remove('show', 'picked', 'pickable'); });
+      state.maxItems = Math.min(3 + Math.floor(state.round / 2), state.gridSize * state.gridSize - 1);
+      state.pattern = [];
+      const all = Array.from({length: state.gridSize * state.gridSize}, (_, i) => i);
+      for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
+      state.pattern = all.slice(0, state.maxItems);
+      state.pattern.forEach(i => document.querySelector(`.vs-cell[data-idx='${i}']`)?.classList.add('show'));
+      msg.textContent = '记住！';
+      btn.style.display = 'none';
+
+      setTimeout(() => {
+        document.querySelectorAll('.vs-cell').forEach(c => c.classList.remove('show'));
+        document.querySelectorAll('.vs-cell').forEach(c => c.classList.add('pickable'));
+        msg.textContent = '点选你记住的方块';
+        btn.style.display = 'block';
+      }, state.gridSize >= 5 ? 2500 : 2000);
+    }
+
+    function checkVS() {
+      const correctSet = new Set(state.pattern);
+      const pickSet = new Set(state.picks);
+      let c = 0; correctSet.forEach(i => { if (pickSet.has(i)) c++; });
+      const acc = Math.round(c / state.maxItems * 100);
+      if (acc >= 60) state.correct++;
+      state.round++;
+      const score = state.correct * 10;
+      document.getElementById('vsScore').textContent = score;
+      document.getElementById('vsRound').textContent = `${state.round}/${state.rounds}`;
+      document.getElementById('vsAcc').textContent = Math.round(state.correct / state.round * 100) + '%';
+      msg.textContent = acc >= 60 ? `✓ ${c}/${state.maxItems}` : `✗ ${c}/${state.maxItems}`;
+
+      // Show correct
+      document.querySelectorAll('.vs-cell').forEach(cell => {
+        cell.classList.remove('picked', 'pickable');
+        if (correctSet.has(parseInt(cell.dataset.idx))) cell.classList.add('show');
+      });
+      btn.style.display = 'none';
+
+      setTimeout(() => {
+        if (state.round >= state.rounds) {
+          saveHistory({ gridSize: state.gridSize, rounds: state.rounds, correct: state.correct, score });
+          render(); return;
+        }
+        showRound();
+      }, 1200);
+    }
+
+    setTimeout(showRound, 600);
+  }
+}
+
+// ═══════════ Game Router ═══════════
+const gameRenderers = { nback: renderNBack, pvt: renderPVT, gng: renderGNG, vs: renderVS };
+
+// Keyboard tab switching
+document.addEventListener('keydown', (e) => {
+  if (sessionActive) return;
+  if (e.key === '1') render('nback');
+  if (e.key === '2') render('pvt');
+  if (e.key === '3') render('gng');
+  if (e.key === '4') render('vs');
+});
+
+render();
+</script>
+</body>
+</html>
